@@ -6,8 +6,8 @@ var b = 0;
 var c = false;
 var d = "";
 
-function f1(posicaoA, posicaoB) {
-  var r = posicaoA * 60 + posicaoB;
+function f1(minutos, segundos) {
+  var r = munitos * 60 + segundos;
   return r;
 }
 

@@ -5,12 +5,12 @@ var listaMusica = [];
 var b = 0;
 var c = false;
 var d = "";
-
-function f1(minutos, segundos) {
-  var r = munitos * 60 + segundos;
-  return r;
+//Calcular duração das músicas em segundos
+function converterSegundos(minutos, segundos) {
+  var totalSegundos = munitos * 60 + segundos;
+  return totalSegundos;
 }
-
+//Calcular duração das músicas em minutos e segundos
 function calcularDuracao(paramSegundos) {
   var minutos = Math.floor(paramSegundos / 60);
   var segundos = paramSegundos % 60;
@@ -20,16 +20,16 @@ function calcularDuracao(paramSegundos) {
   return minutos + ":" + segundos;
 }
 
-function f3(lista, n) {
+function buscaMusica(lista, nome) {
   var resultado = null;
   for (var i = 0; i < lista.length; i++) {
-    if (lista[i].nome == n) {
+    if (lista[i].nome == nome) {
       resultado = lista[i];
     }
   }
   return resultado;
 }
-
+//Calcular o volume da música
 function ajustarVolume(volume) {
 
     if (volume === null) return false;

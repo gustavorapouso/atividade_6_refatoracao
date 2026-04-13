@@ -3,8 +3,8 @@
 
 var listaMusica = [];
 var duracaoListamusica = 0;
-var c = false;
-var d = "";
+var booleano = false;
+var relatorioFinal = "";
 //Calcular duração das músicas em segundos
 function converterSegundos(minutos, segundos) {
   var totalSegundos = munitos * 60 + segundos;
@@ -87,13 +87,13 @@ function ordenarLista(lista) {
   });
   return listaParticionada;
 }
-//
-function f11(lista, p1, p2) {
-  if (p1 < 0 || p1 >= lista.length) return;
-  if (p2 < 0 || p2 >= lista.length) return;
-  var tmp = lista[p1];
-  lista[p1] = lista[p2];
-  lista[p2] = tmp;
+//Trocar posição das músicas
+function trocaPosicao(lista, troca1, troca2) {
+  if (troca1 < 0 || troca1 >= lista.length) return;
+  if (troca2 < 0 || troca2 >= lista.length) return;
+  var valorTemporario = lista[troca1];
+  lista[troca1] = lista[troca2];
+  lista[troca2] = valorTemporario;
 }
 //Arrumar duração máxima
 function duracaoMaxima(lista, duracaoTotal) {
@@ -105,14 +105,8 @@ function duracaoMaxima(lista, duracaoTotal) {
   }
   return resultado;
 }
-
-function adicionarMusicas(
-  paramNome, 
-  paramArtista,
-  paramGenero,
-  minutos,
-  segundos,
-) {
+//Adiciona a música na playlist
+function adicionarMusicas(paramNome, paramArtista, paramGenero, minutos, segundos,) {
   var musica = {};
   musica.nome = paramNome;
   musica.artista = paramArtista;
@@ -121,8 +115,8 @@ function adicionarMusicas(
   musica.favorito = false;
   listaMusica.push(musica);
 }
-
-function mostra() {
+//Mostra o nome dos artista das músicas
+function mostraListamusica() {
   document.getElementById("musica0").innerHTML =
     listaMusica[0].nome +
     " - " +
@@ -162,34 +156,19 @@ function mostra() {
 // Gerar relatório das músicas e a lista
 function criarRelatorio() {
   var relatorio = "";
-  relatorio += "=== RELATORIO DA PLAYLIST ===\n";
-  relatorio = paramSegundos + "Total de musicas: " + listaMusica.length + "\n";
-  paramSegundos = paramSegundos + "Favoritas: " + f9(listaMusica) + "\n";
-  paramSegundos = paramSegundos +
-    "Duracao total: " +
-    calcularDuracao(duracaoSegundos(listaMusica)) +
-    "\n";
-  paramSegundos = paramSegundos + "\n";
+  relatorio = relatorio + "=== RELATORIO DA PLAYLIST ===\n";
+  relatorio = relatorio + "Total de musicas: " + listaMusica.length + "\n";
+  relatorio = relatorio + "Favoritas: " + f9(listaMusica) + "\n";
+  relatorio = relatorio+  "Duracao total: " + calcularDuracao(duracaoSegundos(listaMusica)) + "\n";
+  relatorio = relatorio + "\n";
   for (var i = 0; i < listaMusica.length; i++) {
     var favorito = "";
     if (listaMusica[i].favorito == true) {
-      favorito = " [FAVORITA]";
+      favorito = " [FAVORITA]"
     }
-    paramSegundos = param;
-    0.3 +
-      Segundos +
-      (i + 1) +
-      ". " +
-      listaMusica[i].nome +
-      " - " +
-      listaMusica[i].artista +
-      " (" +
-      calcularDuracao(listaMusica[i].duracao) +
-      ")" +
-      favorito +
-      "\n";
+    relatorio = relatorio + (i + 1) + ". " + listaMusica[i].nome + " - " + listaMusica[i].artista + " (" + calcularDuracao(listaMusica[i].duracao) + ")" + favorito + "\n";
   }
-  d = paramSegundos;
-  console.log(paramSegundos);
-  return paramSegundos;
+  relatorioFinal = relatorio;
+  console.log(relatorio);
+  return relatorio;
 }

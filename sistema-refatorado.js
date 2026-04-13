@@ -117,41 +117,10 @@ function adicionarMusicas(paramNome, paramArtista, paramGenero, minutos, segundo
 }
 //Mostra o nome dos artista das músicas
 function mostraListamusica() {
-  document.getElementById("musica0").innerHTML =
-    listaMusica[0].nome +
-    " - " +
-    listaMusica[0].artista +
-    " (" +
-    calcularDuracao(listaMusica[0].duracao) +
-    ")";
-  document.getElementById("musica1").innerHTML =
-    listaMusica[1].nome +
-    " - " +
-    listaMusica[1].artista +
-    " (" +
-    calcularDuracao(listaMusica[1].duracao) +
-    ")";
-  document.getElementById("musica2").innerHTML =
-    listaMusica[2].nome +
-    " - " +
-    listaMusica[2].artista +
-    " (" +
-    calcularDuracao(listaMusica[2].duracao) +
-    ")";
-  document.getElementById("musica3").innerHTML =
-    listaMusica[3].nome +
-    " - " +
-    listaMusica[3].artista +
-    " (" +
-    calcularDuracao(listaMusica[3].duracao) +
-    ")";
-  document.getElementById("musica4").innerHTML =
-    listaMusica[4].nome +
-    " - " +
-    listaMusica[4].artista +
-    " (" +
-    calcularDuracao(listaMusica[4].duracao) +
-    ")";
+  for(var i = 0; i < listaMusica.length; i++){
+    var texto = listaMusica[i].nome + " - " + listaMusica[i].artista + " / " + calcularDuracao(listaMusica[i].duracao) + ".";
+    document.getElementById("musica" + i).innerHTML = texto;
+  }
 }
 // Gerar relatório das músicas e a lista
 function criarRelatorio() {
